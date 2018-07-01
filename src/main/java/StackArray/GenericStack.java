@@ -1,5 +1,8 @@
 package StackArray;
 
+import StackArrayList.Stack;
+
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -10,6 +13,24 @@ import java.util.Arrays;
 public class GenericStack<E> {
     private E[] elements;
 
+
     public GenericStack() {
+        elements = (E[]) new Object[0];
+    }
+
+
+    public boolean isEmpty() {
+        return elements.length == 0;
+    }
+
+    public void push(E foobar) {
+        elements = Arrays.copyOf(elements, elements.length+1);
+        elements[elements.length-1] = foobar;
+    }
+
+    public E pop() {
+        E element = elements[elements.length-1];
+        elements = Arrays.copyOf(elements, elements.length-1);
+        return element;
     }
 }
